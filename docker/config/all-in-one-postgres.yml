@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.3'
 services:
     flowable-all-in-one-app:
         image: flowable/all-in-one
@@ -10,6 +10,8 @@ services:
             - SPRING_DATASOURCE_URL=jdbc:postgresql://flowable-db:5432/flowable
             - SPRING_DATASOURCE_USERNAME=flowable
             - SPRING_DATASOURCE_PASSWORD=flowable
+            - FLOWABLE_COMMON_APP_IDM-REDIRECT-URL=http://tut-ap249-tv:8080/flowable-idm
+           # - FLOWABLE_COMMON_APP_IDM-URL=http://tut-ap249-tv:8080/flowable-idm
         ports:
             - 8080:8080
         entrypoint: ["/wait-for-something.sh", "flowable-db", "5432", "PostgreSQL", "/opt/tomcat/bin/catalina.sh", "run"]
